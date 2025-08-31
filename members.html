@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Manage Members</h2>
+
+<h3>Add New Member</h3>
+<form method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required>
+    <label for="plan">Plan:</label>
+    <select id="plan" name="plan" required>
+        <option value="Basic Plan">Basic Plan</option>
+        <option value="Standard Plan">Standard Plan</option>
+        <option value="Premium Plan">Premium Plan</option>
+    </select>
+    <button type="submit">Add Member</button>
+</form>
+
+<h3>Current Members</h3>
+<ul>
+    {% for member in members %}
+    <li>{{ member.name }} (Age: {{ member.age }}) - {{ member.plan }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
